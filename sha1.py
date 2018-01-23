@@ -5,17 +5,14 @@ import struct
 import io
 from termcolor import colored
 
-
 try:
     range = xrange
 except NameError:
     pass
 
-
 def _left_rotate(n, b):
     """Left rotate a 32-bit integer n by b bits."""
     return ((n << b) | (n >> (32 - b))) & 0xffffffff
-
 
 def _process_chunk(chunk, h0, h1, h2, h3, h4):
     """Process a chunk of data and return the new digest variables."""
@@ -158,6 +155,13 @@ def sha1(data):
     """
     return Sha1Hash().update(data).hexdigest()
 
+def output(data):
+    # Show the final digest
+    try:
+        print('sha1-digest:', sha1(data))
+    except Exception:
+        # Print colored error message
+        print(colored("Error, could not find ", "red") + colored(argument, "yellow") + colored(" file.", "red"))
 
 if __name__ == '__main__':
     # Imports required for command line parsing. No need for these elsewhere
@@ -171,7 +175,7 @@ if __name__ == '__main__':
 #                        help='input file or message to hash')
 #    args = parser.parse_args()
 
-    data = None
+    data = ""
 
     if len(sys.argv[1:]) == 0:
         # No argument given, assume message comes from standard input
@@ -180,14 +184,15 @@ if __name__ == '__main__':
             # leading to incorrect results. Detach fixes this issue, but it's
             # new in Python 3.1
             data = sys.stdin.detach()
+            output(data)
         except AttributeError:
             # Linux ans OSX both use \n line endings, so only windows is a
             # problem.
             if sys.platform == "win32":
                 import msvcrt
-
                 msvcrt.setmode(sys.stdin.fileno(), os.O_BINARY)
             data = sys.stdin
+            output(data)
     else:
         for argument in sys.argv[1:]:
             if os.path.isfile(argument):
@@ -195,16 +200,4 @@ if __name__ == '__main__':
                 data = open(argument, 'rb')
             else:
                 data = argument
-
-            # Show the final digest
-            try:
-                print('sha1-digest:', sha1(data))
-            except Exception:
-                #Print colored error message
-                print (colored ("Error, could not find ", "red") + colored(argument, "yellow") + colored(" file.", "red"))
-
-
-
-
-
-
+            output(data)
