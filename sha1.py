@@ -175,7 +175,7 @@ if __name__ == '__main__':
 #                        help='input file or message to hash')
 #    args = parser.parse_args()
 
-    data = ""
+    data = None
 
     if len(sys.argv[1:]) == 0:
         # No argument given, assume message comes from standard input

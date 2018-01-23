@@ -28,3 +28,8 @@ A file may also be specified as many arguments to the script:
     sha1-digest: 57a9901af6fe030198ef1737783e2048ee96da4a
     sha1-digest: 743803de635cbcc9001a61ab8498261b1acb3e83
 
+
+
+Example Output
+
+![Sha1 Output](https://postimg.org/image/g0xrxja71/)
