@@ -169,11 +169,6 @@ if __name__ == '__main__':
     import sys
     import os
 
-#    # Parse the incoming arguments
-#    parser = argparse.ArgumentParser()
-#    parser.add_argument('input', nargs='?',
-#                        help='input file or message to hash')
-#    args = parser.parse_args()
 
     data = None
 
