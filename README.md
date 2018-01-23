@@ -32,4 +32,4 @@ A file may also be specified as many arguments to the script:
 
 Example Output
 
-![Sha1 Output](https://postimg.org/image/g0xrxja71/)
+![Sha1 Output](https://raw.githubusercontent.com/cfahlgren1/python-sha1/commandline_image.png)
