@@ -30,6 +30,3 @@ A file may also be specified as many arguments to the script:
 
 
 
-Example Output
-
-![Sha1 Output](https://raw.githubusercontent.com/cfahlgren1/python-sha1/master/commandline_image.png)
