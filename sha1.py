@@ -177,6 +177,7 @@ if __name__ == '__main__':
             # leading to incorrect results. Detach fixes this issue, but it's
             # new in Python 3.1
             data = sys.stdin.detach()
+            #Output
             print('sha1-digest:', sha1(data))
         except AttributeError:
             # Linux ans OSX both use \n line endings, so only windows is a
@@ -187,6 +188,7 @@ if __name__ == '__main__':
                 msvcrt.setmode(sys.stdin.fileno(), os.O_BINARY)
             data = sys.stdin
     else:
+        #Loop through arguments list
         for argument in args.input:
             if (os.path.isfile(argument)):
                 # An argument is given and it's a valid file. Read it
